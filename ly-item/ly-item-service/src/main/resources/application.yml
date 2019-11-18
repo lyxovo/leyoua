@@ -1,0 +1,24 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: item-service
+
+  datasource:    #数据库连接池
+    url: jdbc:mysql://localhost:3306/aaa #省略driver，可以自动判断
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+
+eureka:
+  client:
+    service-url:
+      defaultZone:   http://127.0.0.1:10087/eureka
+  instance:  #保证拿到的服务是Ip127
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    lease-expiration-duration-in-seconds: 15 #过期时间
+    lease-renewal-interval-in-seconds: 5 #心跳时间
+
+mybatis:
+  type-aliases-package: comm.leyou.item.pojo

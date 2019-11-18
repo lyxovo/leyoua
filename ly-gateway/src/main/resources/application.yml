@@ -1,0 +1,30 @@
+server:
+  port: 10011
+spring:
+  application:
+    name: leyou-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://127.0.0.1:10087/eureka
+    registry-fetch-interval-seconds: 5 #设置拉取服务的间隔时间
+zuul:
+  prefix: /api  #:添加路由前缀
+  routes:
+    items-service:  /item/**
+
+hystrix:
+  command:
+    default: #配置默认全局属性
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds:  5000
+
+ribbon:
+  ReadTimeout:  3500
+  ConnectTimeout:  1000
+  MaxAutoRetries:  0
+  MaxAutoRetriesNextServer:  0
+
+
